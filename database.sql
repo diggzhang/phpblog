@@ -1,8 +1,9 @@
-create database info;
-create table article(
-	title varchar(30),
-	author varchar(20),
-	description varchar(200),
-	content text,
-	timeline int
+CREATE DATABASE info;
+
+CREATE TABLE article(
+	title 		VARCHAR(30),
+	author 		VARCHAR(20),
+	description VARCHAR(200),
+	content 	TEXT,
+	timeline 	INT
 );
