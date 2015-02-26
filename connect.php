@@ -2,7 +2,10 @@
 	require_once('config.php');
 	//数据库链接
 	//链库
-	if( $con = mysql_connect(HOST, uSERNAME, PASSWORD) )
+	//***bug line
+	//if( $con = mysql_connect(HOST, uSERNAME, PASSWORD) )
+	echo "Hello";
+	if( $con = mysql_connect(HOST, USERNAME) )
 	{
 		echo mysql_error();	
 	}
@@ -19,4 +22,5 @@
 		echo mysql_error();	
 	}
 	//查询
+	echo "Hello";
 ?>
