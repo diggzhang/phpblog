@@ -16,21 +16,20 @@
 		echo "<script>alert('Title is NULL'); window.location.href='article.add.php'</script>";		
 	}
 
-	$dateline = time();
+	$timeline = time();
 
-	$insertsql = "insert into article(title, author, description, content, dateline) values('$title', '$author', '$description', '$content', $dateline)";
+	$insertsql = "insert into article(title, author, description, content, timeline) values('$title', '$author', '$description', '$content', $timeline)";
 	//测试语句是否正确
 	//echo $insertsql;
-	mysql_select_db('info');
-	echo mysql_error();
-	echo "world";
 	if( mysql_query($insertsql) )
 	{
 		echo "<script>alert('文章插入成功'); window.location.href='article.add.php'</script>";		
 	}
 	else
 	{
-		$err = mysql_error();
-		echo "<script>alert('$err+文章发布失败'); window.location.href='article.add.php'</script>";		
+		echo mysql_error();
+		echo "<script>alert('文章发布失败'); window.location.href='article.add.php'</script>";		
 	}
+
+	echo "world";
 ?>
