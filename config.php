@@ -1,5 +1,6 @@
 <?php
-	//防止修改定义为常量，一般为大写
+	//数据库链接配置文件
+	header("Content-type: text/html; charset=utf-8");
 	define('HOST', '127.0.0.1');
  	define('USERNAME', 'root');	
  	define('PASSWORD', 'root');	
