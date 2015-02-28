@@ -1,3 +1,22 @@
+<?php
+	require_once('connect.php');
+
+	$sql = "select * from article order by timeline desc";
+
+	$query = mysql_query($sql);
+
+	if( $query && mysql_num_rows($query) )
+	{
+		while( $row = mysql_fetch_assoc($query) )
+		{
+			$data[] = $row;
+		}
+	}
+	else
+	{
+		$data = array();
+	}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -122,7 +141,7 @@
         <div class="span9">
             <h1 class="page-title">Post List</h1>
 <div class="btn-toolbar">
-    <button class="btn btn-primary"><i class="icon-plus"></i> Post New</button>
+    <a href="article.add.php"><button class="btn btn-primary"><i class="icon-plus"></i> Post New</button></a>
     <button class="btn">Import</button>
     <button class="btn">Export</button>
   <div class="btn-group">
@@ -140,16 +159,29 @@
 			</tr>
 		</thead>
 		<tbody>
+<?php 
+	if ( !empty($data) ) 
+	{
+		foreach( $data as $value) {
+
+?>
 			<tr>
-				<td>1</td>
-				<td>Mark</td>
-				<td>Tompson</td>
-				<td>the_mark7</td>
+			<td><?php echo $value['id'] ?> </td>
+			<td><?php echo $value['title'] ?></td>
+			<td><?php echo $value['author'] ?></td>
+			<td><?php echo $value['timeline'] ?></td>
 				<td>
-					<a href="article.modify.php"><i class="icon-pencil"></i></a>
-					<a href="article.del.handle.php" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
+				<a href="article.modify.php?id=<?php echo $value['id'] ?>"><i class="icon-pencil"></i></a>
+				<a href="article.del.handle.php?id=<?php echo $value['id'] ?>" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
 				</td>
 			</tr>
+<?php
+		}
+	}
+?>
+		
+
+
 		</tbody>
 	</table>
 </div>
