@@ -1,3 +1,12 @@
+<?
+	require_once('connect.php');
+
+	//readin info
+	//$get_id = $_POST['id'];
+	$get_id = $_GET['id']; 
+	$query = mysql_query("select * from article where id = $get_id");
+	$data = mysql_fetch_assoc($query);
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -92,7 +101,7 @@
 											<li ><a href="users.html">Sample List</a></li>
 											<li><a href="user.html">Sample Item</a></li>
 											<li><a href="article.add.php">Post One</a></li>
-											<li class="active"><a href="article.edit.php">Edit Post</a></li>
+											<li class="active"><a href="article.modify.php">Edit Post</a></li>
 											<li ><a href="gallery.html">Gallery</a></li>
 											<li ><a href="calendar.html">Calendar</a></li>
 											<li ><a href="faq.html">Faq</a></li>
@@ -123,22 +132,22 @@
 								</div>
 								<div class="span9">
 									<h1 class="page-title">Edit Blog</h1>
-									<form action="article.handle.php" method="post">
+									<form action="article.modify.handle.php" method="post">
 
 										<div class="btn-toolbar">
 											<input type="submit" value="Post :)" class="btn btn-primary">
 											<input type="reset" value="Reset" class="btn btn-info">
 										</div>
-
+										<input type="hidden" name="id" value="<?php echo $data['id'] ?>">
 										<div class="well">
 											<label>标题</label>
-											<input name="title" type="text" value="" class="input-xlarge">
+											<input name="title" type="text" value="<?php echo $data['title'] ?>" class="input-xlarge">
 											<label>作者</label>
-											<input name="author" type="text" value="" class="input-xlarge">
+											<input name="author" type="text" value="<?php echo $data['author'] ?>" class="input-xlarge">
 											<label>简介</label>
-											<textarea id="" name="description" rows="3" style="width:100%"></textarea>
+											<textarea id="" name="description" rows="3" style="width:100%"><?php echo $data['description'] ?></textarea>
 											<label>内容</label>
-											<textarea id="" name="content" rows="18" style="width:100%"></textarea>
+											<textarea id="" name="content" rows="18" style="width:100%"><?php echo $data['content'] ?></textarea>
 										</div>
 									</form>
 								</div>

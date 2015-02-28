@@ -28,12 +28,12 @@
 
 	if( mysql_query($updatesql) )
 	{
-		echo "<script>alert('文章修改成功'); window.location.href='article.add.php'</script>";		
+		echo "<script>alert('文章修改成功'); window.location.href='article.manager.php'</script>";		
 	}
 	else
 	{
 		echo mysql_error();
-		echo "<script>alert('文章修改发布失败'); window.location.href='article.add.php'</script>";		
+		echo "<script>alert('文章修改发布失败'); window.location.href='article.modify.php?id=<?php $id?>'</script>";		
 	}
 
 ?>
