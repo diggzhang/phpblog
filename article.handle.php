@@ -25,7 +25,7 @@
 	//echo $insertsql;
 	if( mysql_query($insertsql) )
 	{
-		echo "<script>alert('文章插入成功'); window.location.href='article.add.php'</script>";		
+		echo "<script>alert('文章插入成功'); window.location.href='article.manager.php'</script>";		
 	}
 	else
 	{
